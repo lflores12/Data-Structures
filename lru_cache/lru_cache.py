@@ -51,6 +51,7 @@ class LRUCache:
         # print(f'******{self.storage[key]}')
         if key in self.storage:
             stored_node = self.storage[key]
+            stored_node[1].value = [key, value]
             self.cache.move_to_front(stored_node[1])
             self.storage[key] = [value, self.cache.head]
             return
