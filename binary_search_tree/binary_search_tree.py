@@ -61,7 +61,11 @@ class BinarySearchTree:
     # Hint:  Use a recursive, depth first traversal
 
     def in_order_dft(self, node):
-        pass
+        if node.left:
+            node.in_order_dft(node.left)
+        print(node.value)
+        if node.right:
+            node.in_order_dft(node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
@@ -101,11 +105,11 @@ class BinarySearchTree:
             popped = stack.pop()
             print(popped.value)
         # check root.left and put it in stack
-            if popped.left:
-                stack.push(popped.left)
-        # check root.right and put it in stack
             if popped.right:
                 stack.push(popped.right)
+        # check root.right and put it in stack
+            if popped.left:
+                stack.push(popped.left)
         # go to top of stack and continue
 
     # STRETCH Goals -------------------------
@@ -128,5 +132,4 @@ test.insert(21)
 test.insert(30)
 test.insert(1)
 test.insert(10)
-test.bft_print(test)
-test.dft_print(test)
+test.in_order_dft(test)
